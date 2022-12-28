@@ -2,6 +2,7 @@
 
 let secretNumber = generateSecret();
 let score = 20;
+let highScore = 0;
 
 const inputElement = document.querySelector('input');
 const scoreElement = document.querySelector('.score');
@@ -27,14 +28,14 @@ function checkNumber() {
     document.body.style.backgroundColor = '#60b347';
     secretElement.textContent = secretNumber;
     secretElement.style.width = '30rem';
-    if (score > Number(highScoreElement.textContent)) {
-      highScoreElement.textContent = score;
+    if (score > highScore) {
+      highScoreElement.textContent = highScore = score;
     }
-  } else if (enteredNumber > secretNumber) {
-    messageElement.textContent = '📈 أعلى من الرقم السري';
-    score--;
   } else {
-    messageElement.textContent = '📉 أفل من الرقم السري';
+    messageElement.textContent =
+      enteredNumber > secretNumber
+        ? '📈 أعلى من الرقم السري'
+        : '📉 أقل من الرقم السري';
     score--;
   }
 
